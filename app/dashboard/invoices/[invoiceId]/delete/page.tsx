@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
 import { redirect } from "next/navigation";
 import prisma from "@/app/utils/db";
 import { DeleteInvoice } from "@/action";
