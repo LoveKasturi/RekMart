@@ -5,7 +5,7 @@ import prisma from "@/app/utils/db";
 import { requireUser } from "@/app/utils/hooks";
 
 async function getData(userId: string) {
-  const [data, paidinvoices, openInvoices] = await Promise.all([
+  const [data, openInvoices, paidinvoices] = await Promise.all([
     prisma.invoice.findMany({
       where: {
         userId: userId,
@@ -23,6 +23,7 @@ async function getData(userId: string) {
         id: true,
       },
     }),
+
     prisma.invoice.findMany({
       where: {
         userId: userId,
@@ -36,8 +37,8 @@ async function getData(userId: string) {
 
   return {
     data,
-    paidinvoices,
     openInvoices,
+    paidinvoices,
   };
 }
 
@@ -46,6 +47,7 @@ export async function DashboardBlocks() {
   const { data, openInvoices, paidinvoices } = await getData(
     session.user?.id as string
   );
+
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-4 md:gap-8">
       <Card>
