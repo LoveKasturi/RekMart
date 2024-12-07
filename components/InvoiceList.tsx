@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { InvoiceActions } from "./InvoiceActions";
 import { EmptyState } from "./EmptyState";
 import {
@@ -37,7 +36,6 @@ async function getData(userId: string) {
 }
 export async function InvoiceList() {
   const session = await requireUser();
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = await getData(session.user?.id as string);
   return (
     <>
