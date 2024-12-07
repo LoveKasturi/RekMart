@@ -1,5 +1,5 @@
 "use client";
-/* eslint-disable @typescript-eslint/no-explicit-any */
+
 import { Card, CardContent } from "./ui/card";
 import { Badge } from "./ui/badge";
 import { Input } from "./ui/input";
@@ -26,7 +26,6 @@ import { formatCurrency } from "@/app/utils/formatCurrency";
 import { Prisma } from "@prisma/client";
 
 interface iAppProps {
-  // eslint-disable-next-line @typescript-eslint/no-empty-object-type
   data: Prisma.InvoiceGetPayload<{}>;
 }
 

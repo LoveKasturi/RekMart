@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 "use server";
 import { requireUser } from "./app/utils/hooks";
 import { parseWithZod } from "@conform-to/zod";
@@ -8,7 +7,6 @@ import { redirect } from "next/navigation";
 import { emailClient } from "./app/utils/mailtrap";
 import { formatCurrency } from "./app/utils/formatCurrency";
 
-// eslint-disable-next-line @typescript-eslint/no-explicit-any
 export async function onboardUser(prevState: any, formData: FormData) {
   const session = await requireUser();
 
@@ -20,7 +18,6 @@ export async function onboardUser(prevState: any, formData: FormData) {
     return submission.reply();
   }
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = await prisma.user.update({
     where: {
       id: session.user?.id,
@@ -160,7 +157,6 @@ export async function editInvoice(prevState: any, formData: FormData) {
 export async function DeleteInvoice(invoiceId: string) {
   const session = await requireUser();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = await prisma.invoice.delete({
     where: {
       userId: session.user?.id,
@@ -174,7 +170,6 @@ export async function DeleteInvoice(invoiceId: string) {
 export async function MarkAsPaidAction(invoiceId: string) {
   const session = await requireUser();
 
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const data = await prisma.invoice.update({
     where: {
       userId: session.user?.id,

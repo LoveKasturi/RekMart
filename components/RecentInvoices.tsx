@@ -1,4 +1,3 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Card, CardHeader, CardTitle, CardContent } from "./ui/card";
 import { Avatar, AvatarFallback } from "./ui/avatar";
 import prisma from "@/app/utils/db";
