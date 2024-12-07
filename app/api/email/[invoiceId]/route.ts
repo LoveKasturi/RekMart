@@ -8,12 +8,13 @@ export async function POST(
   {
     params,
   }: {
-    params: { invoiceId: string };
+    params: Promise<{ invoiceId: string }>;
   }
 ) {
   try {
     const session = await requireUser();
-    const { invoiceId } = params;
+
+    const { invoiceId } = await params;
 
     const invoiceData = await prisma.invoice.findUnique({
       where: {
@@ -28,31 +29,28 @@ export async function POST(
 
     const sender = {
       email: "hello@demomailtrap.com",
-      name: "Love Kasturi",
+      name: "Jan Marshal",
     };
 
-    await emailClient.send({
+    emailClient.send({
       from: sender,
-      to: [{ email: "runnergamings@gmail.com" }],
-      template_uuid: "084f0b95-ec1b-4827-abe3-7923ef3830a4",
+      to: [{ email: "jan@alenix.de" }],
+      template_uuid: "03c0c5ec-3f09-42ab-92c3-9f338f31fe2c",
       template_variables: {
         first_name: invoiceData.clientName,
-        company_info_name: "REKMART",
-        company_info_address: "Chandlier street 10,000 A",
+        company_info_name: "InvoiceMarshal",
+        company_info_address: "Chad street 124",
         company_info_city: "Munich",
         company_info_zip_code: "345345",
         company_info_country: "Germany",
       },
     });
 
-    // Success response
-    return NextResponse.json({ message: "Email reminder sent successfully" });
+    return NextResponse.json({ success: true });
   } catch (error) {
-    console.error("Error sending email:", error);
     return NextResponse.json(
       { error: "Failed to send Email reminder" },
       { status: 500 }
     );
   }
 }
-
