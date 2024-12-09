@@ -29,17 +29,17 @@ export async function POST(
 
     const sender = {
       email: "hello@demomailtrap.com",
-      name: "Jan Marshal",
+      name: "Love Kasturi",
     };
 
     emailClient.send({
       from: sender,
-      to: [{ email: "jan@alenix.de" }],
-      template_uuid: "03c0c5ec-3f09-42ab-92c3-9f338f31fe2c",
+      to: [{ email: "runnergamings@gmail.com" }],
+      template_uuid: "084f0b95-ec1b-4827-abe3-7923ef3830a4",
       template_variables: {
         first_name: invoiceData.clientName,
-        company_info_name: "InvoiceMarshal",
-        company_info_address: "Chad street 124",
+        company_info_name: "RekMart",
+        company_info_address: "Chandlier street 124, 10000A",
         company_info_city: "Munich",
         company_info_zip_code: "345345",
         company_info_country: "Germany",
